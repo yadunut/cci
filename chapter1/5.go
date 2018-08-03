@@ -1,5 +1,9 @@
 package chapter1
 
+import (
+	"strconv"
+)
+
 // CompressString compresses the string and returns the compressed string OR returns the original if it cannot be compressed
 func CompressString(s string) string {
 	var output string
@@ -14,15 +18,14 @@ func CompressString(s string) string {
 		if v == curChar {
 			count++
 			continue
-		} else {
-			output += string(curChar)
-			output += string(count)
-			count = 1
-			curChar = v
 		}
+		output += string(curChar)
+		output += strconv.Itoa(count)
+		count = 1
+		curChar = v
 	}
 	output += string(curChar)
-	output += string(count)
+	output += strconv.Itoa(count)
 
 	if len(output) == len(s) {
 		return s
