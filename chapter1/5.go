@@ -59,3 +59,29 @@ func BetterCompressString(s string) string {
 	}
 	return output.String()
 }
+
+// BetterBetterCompressString is a better version of BetterCompressString
+func BetterBetterCompressString(s string) string {
+	var output strings.Builder
+	var count int
+	var curChar = s[0]
+
+	for _, v := range s {
+		if byte(v) == curChar {
+			count++
+			continue
+		}
+		output.WriteByte(curChar)
+		output.WriteString(strconv.Itoa(count))
+		count = 1
+		curChar = byte(v)
+	}
+
+	output.WriteByte(curChar)
+	output.WriteString(strconv.Itoa(count))
+
+	if output.Len() >= len(s) {
+		return s
+	}
+	return output.String()
+}
