@@ -11,6 +11,8 @@ func TestEscapeSpace(t *testing.T) {
 		args args
 		want string
 	}{
+		{"", args{""}, ""},
+		{"", args{"Mr John Smith"}, "Mr%20John%20Smith"},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
@@ -18,7 +20,6 @@ func TestEscapeSpace(t *testing.T) {
 			if got := EscapeSpace(tt.args.a); got != tt.want {
 				t.Errorf("EscapeSpace() = %v, want %v", got, tt.want)
 			}
-			t.Error("Failed")
 		})
 	}
 }
