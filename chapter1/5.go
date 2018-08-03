@@ -27,7 +27,7 @@ func CompressString(s string) string {
 	output += string(curChar)
 	output += strconv.Itoa(count)
 
-	if len(output) == len(s) {
+	if len(output) >= len(s) {
 		return s
 	}
 	return output
